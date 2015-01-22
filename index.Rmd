@@ -1,0 +1,67 @@
+---
+title       : Predicting MPG 
+subtitle    : Prediction of MPG (Miles/(US) gallon) for different cars
+author      : ASK-DataScience
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Introduction
+
+Here, we are trying to predict the MPG (Miles/(US) gallon) for differenct cars using:
+  
+  
+1. Transmission type (0 = Automatic, 1 = Manual)
+2. Number of cylinders (4, 6, or 8)
+3. Gross horsepower
+4. Weight (lb/1000)
+
+--- .class #id 
+
+## Dataset
+
+- mtcars data set was used in this analysis.
+
+```{r}
+data(mtcars)
+head(mtcars)
+mtcars$am <- factor(mtcars$am)
+```
+
+--- .class #id 
+
+## Regression Model
+
+- Linear regression model was used. 
+- The model includes the relationship between mpg (outcome) and transmission type, number of cylinders, gross horsepower. and weight (regressors).
+
+```{r}
+modelFit <- lm(mpg ~ am+cyl+hp+wt, mtcars)
+modelFit
+```
+
+--- .class #id 
+
+## Prediction
+
+- The user can enter his values for the regressors to get the predicted MPG value.
+- This is done using the `predict` function.
+
+```{r, eval=FALSE}
+p <- predict(modelFit, newdata = test)
+```
+
+
+
+
+
+
+
+
+
+
